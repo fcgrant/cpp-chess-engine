@@ -3,7 +3,9 @@
 //
 
 #include "config.h"
+#include <cstdio>
 
 int main(){
+    printf("%d", p);
     return 0;
 }
