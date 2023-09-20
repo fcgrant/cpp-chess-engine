@@ -7,4 +7,7 @@ include_directories(.)
 
 add_executable(cpp_chess_engine
         config.h
-        main.cpp)
+        main.cpp
+        init.cpp
+        display.cpp
+)

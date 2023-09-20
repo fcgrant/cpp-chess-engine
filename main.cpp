@@ -6,6 +6,7 @@
 #include <cstdio>
 
 int main(){
-    printf("%d", p);
+    InitLookupArrays();
+    DisplayLookupArrays();
     return 0;
 }
