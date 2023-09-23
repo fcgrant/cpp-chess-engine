@@ -7,6 +7,25 @@
 
 #define MAXIMUM_PLY 2048
 #define BOARD_ARRAY_SIZE 120
+
+// Macro for calculating the index for a given rank and file in the 120 board array
+#define CalculatePosition(file, rank) ((21 + (file)) + ((rank) * 10))
+
+#define DEBUG
+
+// Macro for logging errors when program is set to DEBUG mode
+#ifndef DEBUG
+#define ASSERT(n)
+#else
+#define ASSERT(n) \
+if(!(n)) { \
+printf("%s - Failed", #n); \
+printf("On %s ", __DATE__); \
+printf("At %s ", __TIME__);  \
+printf("In File %s ", __FILE__); \
+printf("At Line %s ", __LINE__); \
+exit(1);}
+#endif
 typedef unsigned long long U64;
 
 // Upper case represents white pieces, lower case represents black pieces
@@ -69,19 +88,10 @@ typedef struct {
 
     int castlingRights;
 
+    // Piece list containing the position of each piece for each number of pieces possible on the board
+    int pieceList[13][10];
+
 
 } BOARD_STRUCTURE;
 
-// Used to determine the index of a position when querying the board array
-extern int lookupTable64To120[64];
-
-// Used to determine the index of a position when querying a 64-bit integer
-extern int lookupTable120To64[BOARD_ARRAY_SIZE  ];
-
-// Macro for calculating the index for a given rank and file in the 120 board array
-#define CalculatePosition(file, rank) ((21 + (file)) + ((rank) * 10))
-
-void InitLookupArrays();
-
-void DisplayLookupArrays();
 #endif //CPP_CHESS_ENGINE_CONFIG_H
