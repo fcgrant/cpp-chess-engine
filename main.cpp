@@ -5,18 +5,10 @@
 #include "config.h"
 #include "lookup.h"
 #include "bitboard.h"
+#include "init.h"
+
 int main(){
     initLookupTables();
-
-    U64 bitBoard = 0ULL;
-    printBitBoard(bitBoard);
-
-    bitBoard |= (1ULL << lookupTable120To64[A2]);
-    printBitBoard(bitBoard);
-
-    bitBoard |= (1ULL << lookupTable120To64[H8]);
-    printBitBoard(bitBoard);
-
-
+    BOARD_STRUCTURE boardStructure = initStartingStructure();
     return 0;
 }

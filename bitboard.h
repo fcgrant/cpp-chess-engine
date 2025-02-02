@@ -4,5 +4,5 @@
 
 #ifndef CPP_CHESS_ENGINE_BITBOARD_H
 #define CPP_CHESS_ENGINE_BITBOARD_H
-void printBitBoard(U64 bitBoard);
+void printBitBoard(U64* bitBoard);
 #endif //CPP_CHESS_ENGINE_BITBOARD_H

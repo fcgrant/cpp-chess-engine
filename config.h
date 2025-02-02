@@ -11,6 +11,8 @@
 // Macro for calculating the index for a given rank and file in the 120 board array
 #define CalculatePosition(file, rank) ((21 + (file)) + ((rank) * 10))
 
+// Places a piece on a given bitboard
+#define PlacePiece(bitBoardPointer, position) (*bitBoardPointer |= (1ULL << lookupTable120To64[position]))
 #define DEBUG
 
 // Macro for logging errors when program is set to DEBUG mode
@@ -28,13 +30,18 @@ exit(1);}
 #endif
 typedef unsigned long long U64;
 
+
+
 // Upper case represents white pieces, lower case represents black pieces
-enum {EMPTY, K, Q, R, N, B, P, k, q, r, n, b, p};
-enum { FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_NONE};
-enum { RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_NONE};
-enum { WHITE, BLACK, BOTH};
+enum pieces {EMPTY, K, Q, R, N, B, P, k, q, r, n, b, p};
+// std::string pieces[13] = {
+//     "X", "♚", "♛", "♜", "♞", "♝", "♟", "♔", "♕", "♖", "♘", "♗", "♙"
+// };
+enum files { FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_NONE};
+enum ranks { RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_NONE};
+enum colours { WHITE, BLACK, BOTH};
 // This enum will be used to query the board array[120], without needing to calculate the off board indexes
-enum {
+enum squares {
     A1 = 21, B1, C1, D1, E1, F1, G1, H1,
     A2 = 31, B2, C2, D2, E2, F2, G2, H2,
     A3 = 41, B3, C3, D3, E3, F3, G3, H3,
@@ -46,7 +53,7 @@ enum {
 };
 
 // Defines the castling rights for each side, stored as a 4 bit number in the board struct
-enum { KCR = 1, QCR = 2, kCR = 4, qCR = 8, };
+enum castlingRights { KCR = 1, QCR = 2, kCR = 4, qCR = 8 };
 
 typedef struct {
     int move;
@@ -60,7 +67,7 @@ typedef struct {
 
 typedef struct {
     // The entire representation of the board, including the border
-    int BoardArray[BOARD_ARRAY_SIZE];
+    int boardArray[BOARD_ARRAY_SIZE];
 
     // Positions of black, white, and all pawns
     U64 pawns[3];

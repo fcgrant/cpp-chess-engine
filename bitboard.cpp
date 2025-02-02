@@ -4,7 +4,7 @@
 #include "config.h"
 #include "lookup.h"
 #include <cstdio>
-void printBitBoard(U64 bitBoard) {
+void printBitBoard(U64* bitBoard) {
 
     // Initialise a one bit integer to shift up to a certain position to test for piece presence
     U64 currentPosition = 1ULL;
@@ -15,7 +15,7 @@ void printBitBoard(U64 bitBoard) {
 
             if (file % 8 == 0) printf("\n");
 
-            if ((currentPosition << square) & bitBoard) {
+            if ((currentPosition << square) & *bitBoard) {
                 printf("%5d", 1);
             } else {
                 printf("%5d", 0);
