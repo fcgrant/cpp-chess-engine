@@ -13,10 +13,12 @@ BOARD_STRUCTURE initStartingStructure(){
     for (int square = A2; square <= H2; square++) {
         PlacePiece(&board.pawns[WHITE], square);
         PlacePiece(&board.pawns[BOTH], square);
+        board.pieceList[P][square - A2] = square;
     }
     for (int square = A7; square <= H7; square++) {
         PlacePiece(&board.pawns[BLACK], square);
         PlacePiece(&board.pawns[BOTH], square);
+        board.pieceList[p][square - A7] = square;
     }
 
     board.kingSquare[WHITE] = E1;
@@ -28,15 +30,17 @@ BOARD_STRUCTURE initStartingStructure(){
     board.ply = 0;
     board.plyHistory = 0;
 
-    board.boardHistory[0] = {0, 15, OFF_BOARD, 0, startingPositionKey()};
     board.positionKey = startingPositionKey();
+    board.boardHistory[0] = {0, 15, OFF_BOARD, 0, board.positionKey};
 
     for (int piece = K; piece <= p; piece++) {
         switch(piece){
             case K: case k: case Q: case q:
                 board.pieceCount[piece] = 1;
+                break;
             case P: case p:
                 board.pieceCount[piece] = 8;
+                break;
             default:
                 board.pieceCount[piece] = 2;
         }
@@ -48,13 +52,31 @@ BOARD_STRUCTURE initStartingStructure(){
 
     board.majorPieces[WHITE] = 3;
     board.majorPieces[BLACK] = 3;
-    board.majorPieces[BOTH] = 3;
+    board.majorPieces[BOTH] = 6;
 
-    board.majorPieces[WHITE] = 4;
-    board.majorPieces[BLACK] = 4;
-    board.majorPieces[BOTH] = 4;
+    board.minorPieces[WHITE] = 4;
+    board.minorPieces[BLACK] = 4;
+    board.minorPieces[BOTH] = 8;
 
     board.castlingRights = 15;
+
+    board.pieceList[K][0] = E1;
+    board.pieceList[Q][0] = D1;
+    board.pieceList[R][0] = A1;
+    board.pieceList[R][1] = H1;
+    board.pieceList[N][0] = B1;
+    board.pieceList[N][1] = G1;
+    board.pieceList[B][0] = C1;
+    board.pieceList[B][1] = F1;
+
+    board.pieceList[k][0] = E8;
+    board.pieceList[q][0] = D8;
+    board.pieceList[r][0] = A8;
+    board.pieceList[r][1] = H8;
+    board.pieceList[n][0] = B8;
+    board.pieceList[n][1] = G8;
+    board.pieceList[b][0] = C8;
+    board.pieceList[b][1] = F8;
 
     return board;
 }

@@ -6,6 +6,7 @@
 #include "lookup.h"
 #include "bitboard.h"
 #include "init.h"
+#include <iostream>
 
 int main(){
     initLookupTables();

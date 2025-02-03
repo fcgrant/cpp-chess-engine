@@ -2,10 +2,13 @@
 // Created by Fgran on 19/09/2023.
 //
 #include "config.h"
+#include "lookup.h"
 #include <cstdio>
+#include <iostream>
 
-int lookupTable120To64[120];
 int lookupTable64To120[64];
+int lookupTable120To64[BOARD_ARRAY_SIZE];
+
 // Initialise the lookup tables between the 64 array and 120 array
 void initLookupTables() {
 
@@ -48,4 +51,8 @@ void displayLookupTables() {
         if(index % 10 == 0) printf("\n");
         printf("%5d", lookupTable120To64[index]);
     }
+}
+
+void printSquareName(int square) {
+    printf("%c%c", (square % 10) + 64, (square / 10) + 47);
 }

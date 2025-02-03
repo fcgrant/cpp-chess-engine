@@ -98,7 +98,11 @@ typedef struct {
     // Piece list containing the position of each piece for each number of pieces possible on the board
     int pieceList[13][10];
 
-
 } BOARD_STRUCTURE;
+
+typedef struct {
+    int file;
+    int rank;
+} PositionName;
 
 #endif //CPP_CHESS_ENGINE_CONFIG_H

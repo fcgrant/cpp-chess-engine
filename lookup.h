@@ -8,6 +8,8 @@ void initLookupTables();
 
 void displayLookupTables();
 
+void printSquareName(int square);
+
 // Used to determine the index of a position when querying the board array
 extern int lookupTable64To120[64];
 
