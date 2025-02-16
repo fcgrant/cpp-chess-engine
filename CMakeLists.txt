@@ -10,4 +10,5 @@ add_executable(cpp_chess_engine
         lookup.cpp
         bitboard.cpp
         init.cpp
+        move.cpp
 )

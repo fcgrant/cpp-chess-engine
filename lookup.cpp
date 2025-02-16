@@ -18,7 +18,7 @@ void initLookupTables() {
 
     for(index = 0; index < BOARD_ARRAY_SIZE; index++) {
         // Initialise the array with integers outside the range of the 64 array
-        lookupTable120To64[index] = 64;
+        lookupTable120To64[index] = OFF_BOARD;
     }
 
     for(index = 0; index < 64; index++) {
