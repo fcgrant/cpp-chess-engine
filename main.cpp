@@ -13,6 +13,6 @@
 int main(){
     initLookupTables();
     BOARD_STRUCTURE boardStructure = initStartingStructure();
-    std::vector<std::vector<int>> moves = getMoves(boardStructure);
+    std::unordered_map<int, std::vector<int>> moves = getMoves(boardStructure);
     return 0;
 }

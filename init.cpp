@@ -82,6 +82,9 @@ BOARD_STRUCTURE initStartingStructure(){
 }
 
 int pieceOnStartingSquare(int square) {
+    if (startingEmptySquare(square)) {
+        return EMPTY;
+    }
     if (square >= A2 && square <= H2) {
         return P;
     }
@@ -114,6 +117,16 @@ int pieceOnStartingSquare(int square) {
         return OFF_BOARD;
     }
 }
+
+
+bool startingEmptySquare(int square) {
+    bool thirdRank = square >= A3 && square <= H3;
+    bool fourthRank = square >= A4 && square <= H4;
+    bool fifthRank = square >= A5 && square <= H5;
+    bool sixthRank = square >= A6 && square <= H6;
+    return thirdRank || fourthRank || fifthRank || sixthRank;
+}
+
 
 U64 startingPositionKey() {
     U64 positionKey;

@@ -30,7 +30,8 @@ exit(1);}
 #endif
 typedef unsigned long long U64;
 
-
+// Maximum distance any sliding piece can move
+#define MAX_DISTANCE 7
 
 // Upper case represents white pieces, lower case represents black pieces
 enum pieces {EMPTY, K, Q, R, N, B, P, k, q, r, n, b, p};

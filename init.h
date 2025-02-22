@@ -4,6 +4,7 @@
 BOARD_STRUCTURE initStartingStructure();
 
 int pieceOnStartingSquare(int square);
+bool startingEmptySquare(int square);
 
 U64 startingPositionKey();
 #endif
